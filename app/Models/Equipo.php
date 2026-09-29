@@ -13,6 +13,7 @@ class Equipo extends Model
         'modo_uso',
         'estado',
         'mac',
+        'imagen_referencial',
         'ultima_conexion',
     ];
     public function asignaciones(): HasMany

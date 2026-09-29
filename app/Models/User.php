@@ -34,4 +34,18 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Estudiante::class);
     }
+    public function isAdministrador(): bool
+    {
+        return $this->tipo_usuario === 'administrador';
+    }
+
+    public function isDocente(): bool
+    {
+        return $this->tipo_usuario === 'docente';
+    }
+
+    public function isEstudiante(): bool
+    {
+        return $this->tipo_usuario === 'estudiante';
+    }
 }
