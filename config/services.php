@@ -35,4 +35,22 @@ return [
         ],
     ],
 
+    'estudiante_portal' => [
+        'url' => env('ESTUDIANTE_PORTAL_URL'),
+    ],
+
+    'cloudflare' => [
+        'binary' => env('CLOUDFLARED_BINARY', 'C:/cloudflared/cloudflared.exe'),
+        'origin' => env('CLOUDFLARED_ORIGIN', 'http://127.0.0.1:8000'),
+        'log_path' => env('CLOUDFLARED_LOG_PATH', storage_path('app/cloudflared-tunnel.log')),
+    ],
+
+    'http' => [
+        'ca_bundle' => env('HTTP_CA_BUNDLE', env('QR_API_CA_BUNDLE')),
+    ],
+
+    'qr_api' => [
+        'ca_bundle' => env('QR_API_CA_BUNDLE'),
+    ],
+
 ];

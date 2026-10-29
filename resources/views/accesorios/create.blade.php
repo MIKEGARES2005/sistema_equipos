@@ -1,100 +1,25 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo Accesorio</title>
-</head>
-<body>
-    <h1>Registrar accesorio</h1>
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
-    <form action="{{ route('accesorios.store') }}" method="POST">
-        @csrf
-        <label for="equipo_id">Equipo:</label><br>
-        <select id="equipo_id" name="equipo_id" required>
-            <option value="">Seleccione un equipo</option>
-            @foreach ($equipos as $equipo)
-                <option value="{{ $equipo->id }}">
-                    {{ $equipo->codigo }}
-                    - {{ $equipo->marca }}
-                    {{ $equipo->modelo }}
-                </option>
-            @endforeach
-        </select>
-        <br><br>
-        <label for="nombre">Nombre del accesorio:</label><br>
-        <input
-            type="text"
-            id="nombre"
-            name="nombre"
-            placeholder="Ejemplo: Teclado"
-            required
-        >
-        <br><br>
-        <label for="marca">Marca:</label><br>
-        <input
-            type="text"
-            id="marca"
-            name="marca"
-            placeholder="Ejemplo: Logitech"
-        >
-        <br><br>
-        <label for="modelo">Modelo:</label><br>
-        <input
-            type="text"
-            id="modelo"
-            name="modelo"
-            placeholder="Modelo del accesorio"
-        >
-        <br><br>
-        <label for="numero_serie">Número de serie:</label><br>
-        <input
-            type="text"
-            id="numero_serie"
-            name="numero_serie"
-            placeholder="Opcional"
-        >
-        <br><br>
-        <label for="cantidad">Cantidad:</label><br>
-        <input
-            type="number"
-            id="cantidad"
-            name="cantidad"
-            min="1"
-            value="1"
-            required
-        >
-        <br><br>
-        <label for="estado">Estado:</label><br>
-        <select id="estado" name="estado" required>
-            <option value="Disponible">Disponible</option>
-            <option value="En uso">En uso</option>
-            <option value="Dañado">Dañado</option>
-            <option value="Mantenimiento">Mantenimiento</option>
-        </select>
-        <br><br>
-        <label for="observaciones">Observaciones:</label><br>
-        <textarea
-            id="observaciones"
-            name="observaciones"
-            rows="4"
-            cols="40"
-            placeholder="Observaciones adicionales"
-        ></textarea>
-        <br><br>
-        <button type="submit">
-            Registrar accesorio
-        </button>
-    </form>
-    <br>
-    <a href="{{ route('accesorios.index') }}">
-        Volver a accesorios
-    </a>
-</body>
-</html>
+<x-admin-layout>
+    <main class="min-h-screen bg-gradient-to-br from-indigo-50/70 via-white to-blue-50/70 px-4 py-8 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl">
+            <a href="{{ route('accesorios.index') }}" class="text-sm font-semibold text-[#4959A6] hover:underline">← Volver a accesorios</a>
+            <p class="mt-4 text-sm font-semibold text-[#4959A6]">Inventario / Accesorios</p>
+            <h1 class="mt-1 text-3xl font-bold text-slate-800">Registrar accesorio</h1>
+            <p class="mt-2 text-sm text-slate-500">Vincula el accesorio a un equipo y completa sus datos.</p>
+
+            @if ($errors->any())
+                <div class="mt-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+                    <ul class="list-inside list-disc">@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>
+                </div>
+            @endif
+
+            <form action="{{ route('accesorios.store') }}" method="POST" enctype="multipart/form-data" class="mt-6 space-y-5 rounded-2xl border border-indigo-100 bg-white p-6 shadow-sm sm:p-8">
+                @csrf
+                @include('accesorios._form')
+                <div class="flex justify-end gap-3 border-t border-slate-100 pt-5">
+                    <a href="{{ route('accesorios.index') }}" class="rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-600 hover:bg-slate-50">Cancelar</a>
+                    <button type="submit" class="rounded-xl bg-[#272F7A] px-5 py-3 text-sm font-semibold text-white hover:bg-[#4959A6]">Registrar accesorio</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</x-admin-layout>

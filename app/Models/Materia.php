@@ -1,24 +1,49 @@
 <?php
+
 namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+
 class Materia extends Model
 {
+    use HasFactory;
+
+    protected $table = 'materias';
+
+    public const SEMESTRES = [
+        1 => 'Primero',
+        2 => 'Segundo',
+        3 => 'Tercero',
+        4 => 'Cuarto',
+    ];
+
     protected $fillable = [
         'nombre',
+        'sigla',
         'semestre',
-        'docente_id',
-        'hora_inicio',
-        'hora_fin',
         'estado',
     ];
-    public function docente(): BelongsTo
+
+    public function horarios(): HasMany
     {
-        return $this->belongsTo(Docente::class);
+        return $this->hasMany(Horario::class);
     }
-    public function asignaciones(): HasMany
+
+    public function inscripciones(): HasMany
     {
-        return $this->hasMany(Asignacion::class);
+        return $this->hasMany(Inscripcion::class);
+    }
+
+    public function asignaciones(): HasManyThrough
+    {
+        return $this->hasManyThrough(Asignacion::class, Horario::class);
+    }
+
+    public function getSemestreNombreAttribute(): string
+    {
+        return self::SEMESTRES[(int) $this->semestre] ?? (string) $this->semestre;
     }
 }

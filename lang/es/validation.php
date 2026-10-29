@@ -1,0 +1,50 @@
+<?php
+
+return [
+    'accepted' => 'El campo :attribute debe ser aceptado.',
+    'array' => 'El campo :attribute debe ser un arreglo.',
+    'boolean' => 'El campo :attribute debe ser verdadero o falso.',
+    'confirmed' => 'La confirmación de :attribute no coincide.',
+    'current_password' => 'La contraseña actual es incorrecta.',
+    'date' => 'El campo :attribute no es una fecha válida.',
+    'distinct' => 'El campo :attribute tiene un valor duplicado.',
+    'email' => 'El campo :attribute debe ser una dirección de correo válida.',
+    'exists' => 'El valor seleccionado en :attribute no es válido.',
+    'image' => 'El campo :attribute debe ser una imagen.',
+    'in' => 'El valor seleccionado en :attribute no es válido.',
+    'integer' => 'El campo :attribute debe ser un número entero.',
+    'max' => [
+        'array' => 'El campo :attribute no debe tener más de :max elementos.',
+        'file' => 'El campo :attribute no debe pesar más de :max kilobytes.',
+        'numeric' => 'El campo :attribute no debe ser mayor que :max.',
+        'string' => 'El campo :attribute no debe tener más de :max caracteres.',
+    ],
+    'mimes' => 'El campo :attribute debe ser un archivo de tipo: :values.',
+    'min' => [
+        'array' => 'El campo :attribute debe tener al menos :min elementos.',
+        'file' => 'El campo :attribute debe pesar al menos :min kilobytes.',
+        'numeric' => 'El campo :attribute debe ser al menos :min.',
+        'string' => 'El campo :attribute debe tener al menos :min caracteres.',
+    ],
+    'numeric' => 'El campo :attribute debe ser un número.',
+    'regex' => 'El formato del campo :attribute no es válido.',
+    'required' => 'El campo :attribute es obligatorio.',
+    'same' => 'Los campos :attribute y :other deben coincidir.',
+    'size' => [
+        'array' => 'El campo :attribute debe contener :size elementos.',
+        'file' => 'El campo :attribute debe pesar :size kilobytes.',
+        'numeric' => 'El campo :attribute debe ser :size.',
+        'string' => 'El campo :attribute debe tener :size caracteres.',
+    ],
+    'string' => 'El campo :attribute debe ser texto.',
+    'unique' => 'El valor del campo :attribute ya está registrado.',
+
+    'attributes' => [
+        'username' => 'usuario',
+        'password' => 'contraseña',
+        'current_password' => 'contraseña actual',
+        'password_confirmation' => 'confirmación de contraseña',
+        'preguntas.*.pregunta' => 'pregunta de seguridad',
+        'preguntas.*.respuesta' => 'respuesta de seguridad',
+    ],
+];

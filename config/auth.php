@@ -1,5 +1,7 @@
 <?php
+
 use App\Models\User;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -33,6 +35,10 @@ return [
     */
     'guards' => [
         'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'student' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
